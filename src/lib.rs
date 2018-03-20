@@ -37,7 +37,7 @@
 //! assert!(text, b"hello world");
 //! ```
 
-pub extern crate failure;
+extern crate failure;
 
 pub use failure::Error;
 
@@ -47,13 +47,13 @@ pub trait SyncMethods {
   fn open(&mut self) -> Result<(), Error>;
 
   /// Write bytes at an offset to the backend.
-  fn write(&mut self, offset: u64, data: &[u8]) -> Result<(), Error>;
+  fn write(&mut self, offset: usize, data: &[u8]) -> Result<(), Error>;
 
   /// Read a sequence of bytes at an offset from the backend.
-  fn read(&mut self, offset: u64, length: u64) -> Result<&[u8], Error>;
+  fn read(&mut self, offset: usize, length: usize) -> Result<&[u8], Error>;
 
   /// Delete a sequence of bytes at an offset from the backend.
-  fn del(&mut self, offset: u64, length: u64) -> Result<(), Error>;
+  fn del(&mut self, offset: usize, length: usize) -> Result<(), Error>;
 
   // fn close ();
   // fn destroy ();
@@ -81,7 +81,7 @@ where
   }
 
   /// Write bytes at an offset. Calls `SyncMethods::write` under the hood.
-  pub fn write(&mut self, offset: u64, data: &[u8]) -> Result<(), Error> {
+  pub fn write(&mut self, offset: usize, data: &[u8]) -> Result<(), Error> {
     if !self.opened {
       T::open(&mut self.handler)?;
       self.opened = true;
@@ -90,7 +90,7 @@ where
   }
 
   /// Write bytes from an offset. Calls `SyncMethods::read` under the hood.
-  pub fn read(&mut self, offset: u64, length: u64) -> Result<&[u8], Error> {
+  pub fn read(&mut self, offset: usize, length: usize) -> Result<&[u8], Error> {
     if !self.opened {
       T::open(&mut self.handler)?;
       self.opened = true;
@@ -99,7 +99,7 @@ where
   }
 
   /// Delete bytes from an offset. Calls `SyncMethods::del` under the hood.
-  pub fn del(&mut self, offset: u64, length: u64) -> Result<(), Error> {
+  pub fn del(&mut self, offset: usize, length: usize) -> Result<(), Error> {
     if !self.opened {
       T::open(&mut self.handler)?;
       self.opened = true;
