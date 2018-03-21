@@ -5,7 +5,7 @@ license = "Apache-2.0"
 repository = "https://github.com/datrs/random-access-storage"
 documentation = "https://docs.rs/random-access-storage"
 description = "Abstract interface to implement random-access instances."
-authors = ["datrs <yoshuawuyts@gmail.com>"]
+authors = ["Yoshua Wuyts <yoshuawuyts@gmail.com>"]
 
 [dependencies]
 failure = "0.1.1"
