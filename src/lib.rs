@@ -50,7 +50,7 @@ pub trait SyncMethods {
   fn write(&mut self, offset: usize, data: &[u8]) -> Result<(), Error>;
 
   /// Read a sequence of bytes at an offset from the backend.
-  fn read(&mut self, offset: usize, length: usize) -> Result<&[u8], Error>;
+  fn read(&mut self, offset: usize, length: usize) -> Result<Vec<u8>, Error>;
 
   /// Delete a sequence of bytes at an offset from the backend.
   fn del(&mut self, offset: usize, length: usize) -> Result<(), Error>;
@@ -90,7 +90,11 @@ where
   }
 
   /// Write bytes from an offset. Calls `SyncMethods::read` under the hood.
-  pub fn read(&mut self, offset: usize, length: usize) -> Result<&[u8], Error> {
+  pub fn read(
+    &mut self,
+    offset: usize,
+    length: usize,
+  ) -> Result<Vec<u8>, Error> {
     if !self.opened {
       T::open(&mut self.handler)?;
       self.opened = true;
