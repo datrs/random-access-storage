@@ -16,7 +16,7 @@ $ cargo add random-access-storage
 - [random-access-storage/random-access-storage](https://github.com/random-access-storage/random-access-storage)
 
 ## License
-[Apache-2.0](./LICENSE)
+[MIT](./LICENSE-MIT) OR [Apache-2.0](./LICENSE-APACHE)
 
 [1]: https://img.shields.io/crates/v/random-access-storage.svg?style=flat-square
 [2]: https://crates.io/crate/random-access-storage
