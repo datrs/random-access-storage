@@ -7,6 +7,39 @@ Abstract interface to implement random-access instances.
 - [Documentation][8]
 - [Crate][2]
 
+## Why?
+This module forms a shared interface for reading and writing bytes to
+different backends. By having a shared interface, it means implementations
+can easily be swapped, depending on the environment.
+
+## Usage
+```rust,ignore
+extern crate random_access_storage;
+use random_access_storage::{Error, Sync, SyncMethods};
+
+struct S;
+impl SyncMethods for S {
+  fn open(&self) -> Result<(), Error> {
+    // ...
+  }
+  fn write(&self, offset: u64, data: &[u8]) -> Result<(), Error> {
+    // ...
+  }
+  fn read(&self, offset: u64, length: u64) -> Result<&[u8], Error> {
+    // ...
+  }
+  fn del(&self, offset: u64, length: u64) -> Result<(), Error> {
+    // ...
+  }
+}
+
+let file = Sync::new(SyncMethods);
+file.write(0, b"hello")?;
+file.write(0, b" world")?;
+let text = file.read(0, 11,)?;
+assert!(text, b"hello world");
+```
+
 ## Installation
 ```sh
 $ cargo add random-access-storage

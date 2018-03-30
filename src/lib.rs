@@ -1,41 +1,8 @@
-#![deny(warnings, missing_docs)]
-// #![cfg_attr(test, feature(plugin))]
-// #![cfg_attr(test, plugin(clippy))]
-
-//! Abstract interface to implement `random-access-storage` instances.
-//!
-//! ## Why?
-//! This module forms a shared interface for reading and writing bytes to
-//! different backends. By having a shared interface, it means implementations
-//! can easily be swapped, depending on the environment.
-//!
-//! ## Usage
-//! ```rust,ignore
-//! extern crate random_access_storage;
-//! use random_access_storage::{Error, Sync, SyncMethods};
-//!
-//! struct S;
-//! impl SyncMethods for S {
-//!   fn open(&self) -> Result<(), Error> {
-//!     // ...
-//!   }
-//!   fn write(&self, offset: u64, data: &[u8]) -> Result<(), Error> {
-//!     // ...
-//!   }
-//!   fn read(&self, offset: u64, length: u64) -> Result<&[u8], Error> {
-//!     // ...
-//!   }
-//!   fn del(&self, offset: u64, length: u64) -> Result<(), Error> {
-//!     // ...
-//!   }
-//! }
-//!
-//! let file = Sync::new(SyncMethods);
-//! file.write(0, b"hello")?;
-//! file.write(0, b" world")?;
-//! let text = file.read(0, 11,)?;
-//! assert!(text, b"hello world");
-//! ```
+#![deny(missing_docs)]
+#![feature(external_doc)]
+#![doc(include = "../README.md")]
+#![cfg_attr(test, feature(plugin))]
+#![cfg_attr(test, plugin(clippy))]
 
 extern crate failure;
 
@@ -75,7 +42,7 @@ where
   /// Create a new `Sync` instance.
   pub fn new(handler: T) -> Sync<T> {
     Sync {
-      handler: handler,
+      handler,
       opened: false,
     }
   }

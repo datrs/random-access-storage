@@ -11,4 +11,4 @@ authors = ["Yoshua Wuyts <yoshuawuyts@gmail.com>"]
 failure = "0.1.1"
 
 [dev-dependencies]
-# clippy = "0.0.187"
+clippy = "*"
