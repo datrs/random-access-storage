@@ -1,15 +1,14 @@
-#![deny(missing_docs)]
-#![feature(external_doc)]
-#![doc(include = "../README.md")]
-#![cfg_attr(test, feature(plugin))]
-#![cfg_attr(test, plugin(clippy))]
+#![cfg_attr(feature = "nightly", deny(missing_docs))]
+#![cfg_attr(feature = "nightly", feature(external_doc))]
+#![cfg_attr(feature = "nightly", doc(include = "../README.md"))]
+#![cfg_attr(test, deny(warnings))]
 
 extern crate failure;
 
-pub use failure::Error;
+use failure::Error;
 
 /// Methods that need to be implemented for the `Sync` struct.
-pub trait SyncMethods {
+pub trait RandomAccessMethods {
   /// Open the backend.
   fn open(&mut self) -> Result<(), Error>;
 
@@ -21,27 +20,23 @@ pub trait SyncMethods {
 
   /// Delete a sequence of bytes at an offset from the backend.
   fn del(&mut self, offset: usize, length: usize) -> Result<(), Error>;
-
-  // fn close ();
-  // fn destroy ();
-  // fn stat ();
 }
 
-/// Create a synchronous instance.
+/// Create a random access instance.
 #[derive(Debug)]
-pub struct Sync<T> {
+pub struct RandomAccess<T> {
   /// Check whether or not the file has been opened.
   pub opened: bool,
   handler: T,
 }
 
-impl<T> Sync<T>
+impl<T> RandomAccess<T>
 where
-  T: SyncMethods,
+  T: RandomAccessMethods,
 {
-  /// Create a new `Sync` instance.
-  pub fn new(handler: T) -> Sync<T> {
-    Sync {
+  /// Create a new `RandomAccess` instance.
+  pub fn new(handler: T) -> RandomAccess<T> {
+    Self {
       handler,
       opened: false,
     }
@@ -77,8 +72,4 @@ where
     }
     T::del(&mut self.handler, offset, length)
   }
-
-  // pub fn close () {}
-  // pub fn destroy () {}
-  // pub fn stat () {}
 }
