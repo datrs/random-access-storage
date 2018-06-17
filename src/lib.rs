@@ -1,25 +1,28 @@
-#![cfg_attr(feature = "nightly", deny(missing_docs))]
-#![cfg_attr(feature = "nightly", feature(external_doc))]
-#![cfg_attr(feature = "nightly", doc(include = "../README.md"))]
+#![cfg_attr(nightly, deny(missing_docs))]
+#![cfg_attr(nightly, feature(external_doc))]
+#![cfg_attr(nightly, doc(include = "../README.md"))]
 #![cfg_attr(test, deny(warnings))]
 
-extern crate failure;
-
-use failure::Error;
-
-/// Methods that need to be implemented for the `Sync` struct.
+/// Methods that need to be implemented for the `RandomAccess` struct.
 pub trait RandomAccessMethods {
+  /// An error.
+  type Error;
+
   /// Open the backend.
-  fn open(&mut self) -> Result<(), Error>;
+  fn open(&mut self) -> Result<(), Self::Error>;
 
   /// Write bytes at an offset to the backend.
-  fn write(&mut self, offset: usize, data: &[u8]) -> Result<(), Error>;
+  fn write(&mut self, offset: usize, data: &[u8]) -> Result<(), Self::Error>;
 
   /// Read a sequence of bytes at an offset from the backend.
-  fn read(&mut self, offset: usize, length: usize) -> Result<Vec<u8>, Error>;
+  fn read(
+    &mut self,
+    offset: usize,
+    length: usize,
+  ) -> Result<Vec<u8>, Self::Error>;
 
   /// Delete a sequence of bytes at an offset from the backend.
-  fn del(&mut self, offset: usize, length: usize) -> Result<(), Error>;
+  fn del(&mut self, offset: usize, length: usize) -> Result<(), Self::Error>;
 }
 
 /// Create a random access instance.
@@ -42,8 +45,8 @@ where
     }
   }
 
-  /// Write bytes at an offset. Calls `SyncMethods::write` under the hood.
-  pub fn write(&mut self, offset: usize, data: &[u8]) -> Result<(), Error> {
+  /// Write bytes at an offset. Calls out to `RandomAccessMethods::write`.
+  pub fn write(&mut self, offset: usize, data: &[u8]) -> Result<(), T::Error> {
     if !self.opened {
       T::open(&mut self.handler)?;
       self.opened = true;
@@ -51,12 +54,12 @@ where
     T::write(&mut self.handler, offset, data)
   }
 
-  /// Write bytes from an offset. Calls `SyncMethods::read` under the hood.
+  /// Write bytes from an offset. Calls out to `RandomAccessMethods::read`.
   pub fn read(
     &mut self,
     offset: usize,
     length: usize,
-  ) -> Result<Vec<u8>, Error> {
+  ) -> Result<Vec<u8>, T::Error> {
     if !self.opened {
       T::open(&mut self.handler)?;
       self.opened = true;
@@ -64,8 +67,8 @@ where
     T::read(&mut self.handler, offset, length)
   }
 
-  /// Delete bytes from an offset. Calls `SyncMethods::del` under the hood.
-  pub fn del(&mut self, offset: usize, length: usize) -> Result<(), Error> {
+  /// Delete bytes from an offset. Calls out to `RandomAccessMethods::del`.
+  pub fn del(&mut self, offset: usize, length: usize) -> Result<(), T::Error> {
     if !self.opened {
       T::open(&mut self.handler)?;
       self.opened = true;
