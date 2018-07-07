@@ -13,31 +13,33 @@ different backends. By having a shared interface, it means implementations
 can easily be swapped, depending on the environment.
 
 ## Usage
-```rust,ignore
+```rust
 extern crate random_access_storage;
-use random_access_storage::{Error, Sync, SyncMethods};
+
+use random_access_storage::{Sync, SyncMethods};
 
 struct S;
 impl SyncMethods for S {
-  fn open(&self) -> Result<(), Error> {
-    // ...
+  type Error = std::io::Error;
+
+  fn open(&self) -> Result<(), Self::Error> {
+    unimplemented!();
   }
-  fn write(&self, offset: u64, data: &[u8]) -> Result<(), Error> {
-    // ...
+
+  fn write(&self, offset: u64, data: &[u8]) -> Result<(), Self::Error> {
+    unimplemented!();
   }
-  fn read(&self, offset: u64, length: u64) -> Result<&[u8], Error> {
-    // ...
+
+  fn read(&self, offset: u64, length: u64) -> Result<Vec<u8>, Self::Error> {
+    unimplemented!();
   }
-  fn del(&self, offset: u64, length: u64) -> Result<(), Error> {
-    // ...
+
+  fn del(&self, offset: u64, length: u64) -> Result<(), Self::Error> {
+    unimplemented!();
   }
 }
 
-let file = Sync::new(SyncMethods);
-file.write(0, b"hello")?;
-file.write(0, b" world")?;
-let text = file.read(0, 11,)?;
-assert!(text, b"hello world");
+let _file = Sync::new(S);
 ```
 
 ## Installation

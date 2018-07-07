@@ -1,6 +1,6 @@
-#![cfg_attr(nightly, deny(missing_docs))]
-#![cfg_attr(nightly, feature(external_doc))]
-#![cfg_attr(nightly, doc(include = "../README.md"))]
+#![cfg_attr(feature = "nightly", deny(missing_docs))]
+#![cfg_attr(feature = "nightly", feature(external_doc))]
+#![cfg_attr(feature = "nightly", doc(include = "../README.md"))]
 #![cfg_attr(test, deny(warnings))]
 
 /// Methods that need to be implemented for the `RandomAccess` struct.
