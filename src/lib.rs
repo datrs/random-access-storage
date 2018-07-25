@@ -54,7 +54,7 @@ where
     T::write(&mut self.handler, offset, data)
   }
 
-  /// Write bytes from an offset. Calls out to `RandomAccessMethods::read`.
+  /// Read bytes from an offset. Calls out to `RandomAccessMethods::read`.
   pub fn read(
     &mut self,
     offset: usize,
