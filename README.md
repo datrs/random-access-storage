@@ -22,19 +22,28 @@ struct S;
 impl SyncMethods for S {
   type Error = std::io::Error;
 
-  fn open(&self) -> Result<(), Self::Error> {
+  fn open(&mut self) -> Result<(), Self::Error> {
     unimplemented!();
   }
 
-  fn write(&self, offset: u64, data: &[u8]) -> Result<(), Self::Error> {
+  fn write(&mut self, offset: u64, data: &[u8]) -> Result<(), Self::Error> {
     unimplemented!();
   }
 
-  fn read(&self, offset: u64, length: u64) -> Result<Vec<u8>, Self::Error> {
+  fn read(&mut self, offset: u64, length: u64) -> Result<Vec<u8>, Self::Error> {
     unimplemented!();
   }
 
-  fn del(&self, offset: u64, length: u64) -> Result<(), Self::Error> {
+  fn read_to_writer(
+    &mut self,
+    offset: u64,
+    length: u64,
+    writer: &mut impl std::io::Writer
+  ) -> Result<(), Self::Error> {
+    unimplemented!();
+  }
+
+  fn del(&mut self, offset: u64, length: u64) -> Result<(), Self::Error> {
     unimplemented!();
   }
 }

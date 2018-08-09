@@ -3,6 +3,8 @@
 #![cfg_attr(feature = "nightly", doc(include = "../README.md"))]
 #![cfg_attr(test, deny(warnings))]
 
+use std::io;
+
 /// Methods that need to be implemented for the `RandomAccess` struct.
 pub trait RandomAccessMethods {
   /// An error.
@@ -20,6 +22,14 @@ pub trait RandomAccessMethods {
     offset: usize,
     length: usize,
   ) -> Result<Vec<u8>, Self::Error>;
+
+  /// Read a sequence of bytes at an offset from the backend.
+  fn read_to_writer(
+    &mut self,
+    offset: usize,
+    length: usize,
+    buf: &mut impl io::Write,
+  ) -> Result<(), Self::Error>;
 
   /// Delete a sequence of bytes at an offset from the backend.
   fn del(&mut self, offset: usize, length: usize) -> Result<(), Self::Error>;
@@ -65,6 +75,20 @@ where
       self.opened = true;
     }
     T::read(&mut self.handler, offset, length)
+  }
+
+  /// Read bytes to a vector. Calls out to `RandomAccessMethods::read_to_writer`
+  pub fn read_to_writer(
+    &mut self,
+    offset: usize,
+    length: usize,
+    buf: &mut impl io::Write,
+  ) -> Result<(), T::Error> {
+    if !self.opened {
+      T::open(&mut self.handler)?;
+      self.opened = true;
+    }
+    T::read_to_writer(&mut self.handler, offset, length, buf)
   }
 
   /// Delete bytes from an offset. Calls out to `RandomAccessMethods::del`.
