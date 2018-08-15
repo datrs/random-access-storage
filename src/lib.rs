@@ -10,9 +10,6 @@ pub trait RandomAccessMethods {
   /// An error.
   type Error;
 
-  /// Open the backend.
-  fn open(&mut self) -> Result<(), Self::Error>;
-
   /// Write bytes at an offset to the backend.
   fn write(&mut self, offset: usize, data: &[u8]) -> Result<(), Self::Error>;
 
@@ -38,8 +35,6 @@ pub trait RandomAccessMethods {
 /// Create a random access instance.
 #[derive(Debug)]
 pub struct RandomAccess<T> {
-  /// Check whether or not the file has been opened.
-  pub opened: bool,
   handler: T,
 }
 
@@ -49,18 +44,11 @@ where
 {
   /// Create a new `RandomAccess` instance.
   pub fn new(handler: T) -> RandomAccess<T> {
-    Self {
-      handler,
-      opened: false,
-    }
+    Self { handler }
   }
 
   /// Write bytes at an offset. Calls out to `RandomAccessMethods::write`.
   pub fn write(&mut self, offset: usize, data: &[u8]) -> Result<(), T::Error> {
-    if !self.opened {
-      T::open(&mut self.handler)?;
-      self.opened = true;
-    }
     T::write(&mut self.handler, offset, data)
   }
 
@@ -70,10 +58,6 @@ where
     offset: usize,
     length: usize,
   ) -> Result<Vec<u8>, T::Error> {
-    if !self.opened {
-      T::open(&mut self.handler)?;
-      self.opened = true;
-    }
     T::read(&mut self.handler, offset, length)
   }
 
@@ -84,19 +68,11 @@ where
     length: usize,
     buf: &mut impl io::Write,
   ) -> Result<(), T::Error> {
-    if !self.opened {
-      T::open(&mut self.handler)?;
-      self.opened = true;
-    }
     T::read_to_writer(&mut self.handler, offset, length, buf)
   }
 
   /// Delete bytes from an offset. Calls out to `RandomAccessMethods::del`.
   pub fn del(&mut self, offset: usize, length: usize) -> Result<(), T::Error> {
-    if !self.opened {
-      T::open(&mut self.handler)?;
-      self.opened = true;
-    }
     T::del(&mut self.handler, offset, length)
   }
 }
