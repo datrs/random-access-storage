@@ -16,10 +16,10 @@ can easily be swapped, depending on the environment.
 ```rust
 extern crate random_access_storage;
 
-use random_access_storage::{Sync, SyncMethods};
+use random_access_storage::{RandomAccessMethods, RandomAccess};
 
 struct S;
-impl SyncMethods for S {
+impl RandomAccessMethods for S {
   type Error = std::io::Error;
 
   fn open(&mut self) -> Result<(), Self::Error> {
@@ -48,7 +48,7 @@ impl SyncMethods for S {
   }
 }
 
-let _file = Sync::new(S);
+let _file = RandomAccess::new(S);
 ```
 
 ## Installation
