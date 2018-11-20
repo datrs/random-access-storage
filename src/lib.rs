@@ -31,4 +31,8 @@ pub trait RandomAccess {
 
   /// Delete a sequence of bytes at an offset from the backend.
   fn del(&mut self, offset: usize, length: usize) -> Result<(), Self::Error>;
+
+  /// Resize the sequence of bytes, possibly discarding or zero-padding bytes
+  /// from the end.
+  fn truncate(&mut self, length: usize) -> Result<(), Self::Error>;
 }
