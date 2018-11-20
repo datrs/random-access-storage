@@ -46,6 +46,10 @@ impl RandomAccessMethods for S {
   fn del(&mut self, offset: u64, length: u64) -> Result<(), Self::Error> {
     unimplemented!();
   }
+
+  fn truncate(&mut self, length: u64) -> Result<(), Self::Error> {
+    unimplemented!();
+  }
 }
 
 let _file = RandomAccess::new(S);
