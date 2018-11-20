@@ -1,3 +1,21 @@
+## 2018-11-20, Version 1.0.0
+### Commits
+- [[`2e9f4090d7`](https://github.com/datrs/random-access-storage/commit/2e9f4090d766a8fbaf6301e789b7db1439e383ad)] (cargo-release) version 1.0.0 (Yoshua Wuyts)
+- [[`5e423e35ff`](https://github.com/datrs/random-access-storage/commit/5e423e35ff60ad7ed918a883c776c287a4b9b3fe)] truncate method (#15) (James Halliday)
+- [[`0b242b6234`](https://github.com/datrs/random-access-storage/commit/0b242b6234586ceb1b23a2ac5a7ba5b021084be5)] Keep up with modern times in clippy invocation (#12) (Szabolcs Berecz)
+- [[`622cf79c92`](https://github.com/datrs/random-access-storage/commit/622cf79c92194ea234c92bd090cd061425331ff0)] update changelog (Yoshua Wuyts)
+
+### Stats
+```diff
+ .travis.yml  |  2 +-
+ CHANGELOG.md | 19 +++++++++++++++++++
+ Cargo.toml   |  2 +-
+ README.md    |  4 ++++
+ src/lib.rs   |  4 ++++
+ 5 files changed, 29 insertions(+), 2 deletions(-)
+```
+
+
 ## 2018-08-29, Version 0.6.0
 ### Commits
 - [[`23e48f8e29`](https://github.com/datrs/random-access-storage/commits/23e48f8e29fc5cb0eaf7a0e77485cd6d23884771)] (cargo-release) version 0.6.0 (Yoshua Wuyts)
