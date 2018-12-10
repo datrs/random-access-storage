@@ -50,6 +50,14 @@ impl RandomAccessMethods for S {
   fn truncate(&mut self, length: u64) -> Result<(), Self::Error> {
     unimplemented!();
   }
+
+  fn len(&mut self) -> Result<u64, Self::Error> {
+    unimplemented!();
+  }
+
+  fn is_empty(&mut self) -> Result<bool, Self::Error> {
+    unimplemented!();
+  }
 }
 
 let _file = RandomAccess::new(S);
