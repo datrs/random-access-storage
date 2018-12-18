@@ -1,6 +1,6 @@
 [package]
 name = "random-access-storage"
-version = "1.0.0"
+version = "2.0.0"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/datrs/random-access-storage"
 documentation = "https://docs.rs/random-access-storage"
