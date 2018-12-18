@@ -1,3 +1,19 @@
+## 2018-12-18, Version 2.0.0
+### Commits
+- [[`55ab88f0fd`](https://github.com/datrs/random-access-storage/commit/55ab88f0fd5114f8911442bc665fcca6949516ac)] (cargo-release) version 2.0.0 (Yoshua Wuyts)
+- [[`81319ec100`](https://github.com/datrs/random-access-storage/commit/81319ec100e196c0ad79528d966d7717005c38f1)] len() and is_empty() (#16) (James Halliday)
+- [[`fb18d9f5d3`](https://github.com/datrs/random-access-storage/commit/fb18d9f5d3a4b950f457d941acd69f6c57a11bf7)] Update changelog (Yoshua Wuyts)
+
+### Stats
+```diff
+ CHANGELOG.md | 18 ++++++++++++++++++
+ Cargo.toml   |  2 +-
+ README.md    |  8 ++++++++
+ src/lib.rs   |  8 ++++++++
+ 4 files changed, 35 insertions(+), 1 deletion(-)
+```
+
+
 ## 2018-11-20, Version 1.0.0
 ### Commits
 - [[`2e9f4090d7`](https://github.com/datrs/random-access-storage/commit/2e9f4090d766a8fbaf6301e789b7db1439e383ad)] (cargo-release) version 1.0.0 (Yoshua Wuyts)
