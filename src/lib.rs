@@ -35,4 +35,12 @@ pub trait RandomAccess {
   /// Resize the sequence of bytes, possibly discarding or zero-padding bytes
   /// from the end.
   fn truncate(&mut self, length: usize) -> Result<(), Self::Error>;
+
+  /// Get the size of the storage in bytes.
+  fn len(&mut self) -> Result<usize, Self::Error>;
+
+  /// Whether the storage is empty.
+  /// For some storage backends it may be cheaper to calculate whether the
+  /// storage is empty than to calculate the length.
+  fn is_empty(&mut self) -> Result<bool, Self::Error>;
 }
