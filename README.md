@@ -58,6 +58,10 @@ impl RandomAccessMethods for S {
   fn is_empty(&mut self) -> Result<bool, Self::Error> {
     unimplemented!();
   }
+
+  fn sync_all(&mut self) -> Result<(), Self::Error> {
+    unimplemented!();
+  }
 }
 
 let _file = RandomAccess::new(S);
