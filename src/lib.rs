@@ -12,32 +12,28 @@ pub trait RandomAccess {
   type Error;
 
   /// Write bytes at an offset to the backend.
-  fn write(&mut self, offset: usize, data: &[u8]) -> Result<(), Self::Error>;
+  fn write(&mut self, offset: u64, data: &[u8]) -> Result<(), Self::Error>;
 
   /// Read a sequence of bytes at an offset from the backend.
-  fn read(
-    &mut self,
-    offset: usize,
-    length: usize,
-  ) -> Result<Vec<u8>, Self::Error>;
+  fn read(&mut self, offset: u64, length: u64) -> Result<Vec<u8>, Self::Error>;
 
   /// Read a sequence of bytes at an offset from the backend.
   fn read_to_writer(
     &mut self,
-    offset: usize,
-    length: usize,
+    offset: u64,
+    length: u64,
     buf: &mut impl io::Write,
   ) -> Result<(), Self::Error>;
 
   /// Delete a sequence of bytes at an offset from the backend.
-  fn del(&mut self, offset: usize, length: usize) -> Result<(), Self::Error>;
+  fn del(&mut self, offset: u64, length: u64) -> Result<(), Self::Error>;
 
   /// Resize the sequence of bytes, possibly discarding or zero-padding bytes
   /// from the end.
-  fn truncate(&mut self, length: usize) -> Result<(), Self::Error>;
+  fn truncate(&mut self, length: u64) -> Result<(), Self::Error>;
 
   /// Get the size of the storage in bytes.
-  fn len(&self) -> Result<usize, Self::Error>;
+  fn len(&self) -> Result<u64, Self::Error>;
 
   /// Whether the storage is empty.
   /// For some storage backends it may be cheaper to calculate whether the
