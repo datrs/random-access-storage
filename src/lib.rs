@@ -43,4 +43,7 @@ pub trait RandomAccess {
   /// For some storage backends it may be cheaper to calculate whether the
   /// storage is empty than to calculate the length.
   fn is_empty(&mut self) -> Result<bool, Self::Error>;
+
+  /// Flush buffered data on the underlying storage resource.
+  fn sync_all(&mut self) -> Result<(), Self::Error>;
 }
