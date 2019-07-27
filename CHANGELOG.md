@@ -1,3 +1,21 @@
+## 2019-07-27, Version 3.0.0
+### Commits
+- [[`49c25778a0`](https://github.com/datrs/random-access-storage/commit/49c25778a0f80db733028c059958303e374b5965)] (cargo-release) version 3.0.0 (Yoshua Wuyts)
+- [[`553af611fd`](https://github.com/datrs/random-access-storage/commit/553af611fde9a22e92b17c9b52cc1379cd4dc57d)] u64 file offsets (#17) (James Halliday)
+- [[`b73e7fb619`](https://github.com/datrs/random-access-storage/commit/b73e7fb619ebf07de6f5f409bee4f843cb0f0967)] sync_all method (#18) (James Halliday)
+- [[`02e700d41c`](https://github.com/datrs/random-access-storage/commit/02e700d41ce119325d09c762b697b957af16697a)] Changed signature of len() to immutably borrow self (#19) (Freddie Ridell)
+- [[`36c5b96d63`](https://github.com/datrs/random-access-storage/commit/36c5b96d63159317c6ec756ff579174e07856b10)] Update changelog (Yoshua Wuyts)
+
+### Stats
+```diff
+ CHANGELOG.md | 16 ++++++++++++++++
+ Cargo.toml   |  4 ++--
+ README.md    |  4 ++++
+ src/lib.rs   | 21 ++++++++++-----------
+ 4 files changed, 32 insertions(+), 13 deletions(-)
+```
+
+
 ## 2018-12-18, Version 2.0.0
 ### Commits
 - [[`55ab88f0fd`](https://github.com/datrs/random-access-storage/commit/55ab88f0fd5114f8911442bc665fcca6949516ac)] (cargo-release) version 2.0.0 (Yoshua Wuyts)
