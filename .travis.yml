@@ -3,11 +3,12 @@ rust:
   - nightly
 
 before_script: |
-  rustup component add rustfmt-preview &&
-  rustup component add clippy-preview
+  rustup update stable &&
+  rustup component add --toolchain stable rustfmt-preview &&
+  rustup component add --toolchain stable clippy-preview
 script: |
-  cargo fmt -- --check &&
-  cargo clippy -- -D clippy::all &&
+  cargo +stable fmt -- --check &&
+  cargo +stable clippy -- -D clippy::all &&
   cargo build --verbose &&
   cargo test  --verbose
 cache: cargo
