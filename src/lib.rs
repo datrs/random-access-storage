@@ -29,7 +29,7 @@ pub trait RandomAccess {
     &mut self,
     offset: u64,
     length: u64,
-    buf: &mut (impl futures::io::AsyncWrite + Send),
+    buf: &mut (impl futures_io::AsyncWrite + Send),
   ) -> Result<(), Self::Error>;
 
   /// Delete a sequence of bytes at an offset from the backend.
