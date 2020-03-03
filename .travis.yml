@@ -1,14 +1,13 @@
 language: rust
 rust:
-  - nightly
+  - stable
 
 before_script: |
-  rustup update stable &&
-  rustup component add --toolchain stable rustfmt-preview &&
-  rustup component add --toolchain stable clippy-preview
+  rustup component add rustfmt &&
+  rustup component add clippy
 script: |
-  cargo +stable fmt -- --check &&
-  cargo +stable clippy -- -D clippy::all &&
+  cargo fmt -- --check &&
+  cargo clippy -- -D clippy::all &&
   cargo build --verbose &&
   cargo test  --verbose
 cache: cargo

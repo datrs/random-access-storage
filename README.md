@@ -14,52 +14,52 @@ can easily be swapped, depending on the environment.
 
 ## Usage
 ```rust
-extern crate random_access_storage;
-
 use random_access_storage::{RandomAccessMethods, RandomAccess};
+use async_trait::async_trait;
 
 struct S;
+#[async_trait]
 impl RandomAccessMethods for S {
   type Error = std::io::Error;
 
-  fn open(&mut self) -> Result<(), Self::Error> {
+  async fn open(&mut self) -> Result<(), Self::Error> {
     unimplemented!();
   }
 
-  fn write(&mut self, offset: u64, data: &[u8]) -> Result<(), Self::Error> {
+  async fn write(&mut self, offset: u64, data: &[u8]) -> Result<(), Self::Error> {
     unimplemented!();
   }
 
-  fn read(&mut self, offset: u64, length: u64) -> Result<Vec<u8>, Self::Error> {
+  async fn read(&mut self, offset: u64, length: u64) -> Result<Vec<u8>, Self::Error> {
     unimplemented!();
   }
 
-  fn read_to_writer(
+  async fn read_to_writer(
     &mut self,
     offset: u64,
     length: u64,
-    writer: &mut impl std::io::Writer
+    writer: &mut (impl futures::io::AsyncWriter + Send)
   ) -> Result<(), Self::Error> {
     unimplemented!();
   }
 
-  fn del(&mut self, offset: u64, length: u64) -> Result<(), Self::Error> {
+  async fn del(&mut self, offset: u64, length: u64) -> Result<(), Self::Error> {
     unimplemented!();
   }
 
-  fn truncate(&mut self, length: u64) -> Result<(), Self::Error> {
+  async fn truncate(&mut self, length: u64) -> Result<(), Self::Error> {
     unimplemented!();
   }
 
-  fn len(&mut self) -> Result<u64, Self::Error> {
+  async fn len(&mut self) -> Result<u64, Self::Error> {
     unimplemented!();
   }
 
-  fn is_empty(&mut self) -> Result<bool, Self::Error> {
+  async fn is_empty(&mut self) -> Result<bool, Self::Error> {
     unimplemented!();
   }
 
-  fn sync_all(&mut self) -> Result<(), Self::Error> {
+  async fn sync_all(&mut self) -> Result<(), Self::Error> {
     unimplemented!();
   }
 }
