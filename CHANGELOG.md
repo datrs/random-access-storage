@@ -1,3 +1,25 @@
+## 2020-03-03, Version 4.0.0
+### Commits
+- [[`064eb1d6c9`](https://github.com/datrs/random-access-storage/commit/064eb1d6c9c1110f7cb01bfbaa6eb43d52330cd4)] (cargo-release) version 4.0.0 (Bruno Tavares)
+- [[`0e7ab518e5`](https://github.com/datrs/random-access-storage/commit/0e7ab518e5d529160073e5aa295ff6a711472944)] Merge pull request #22 from bltavares/async-trait (Bruno Tavares)
+- [[`2f5f4a0567`](https://github.com/datrs/random-access-storage/commit/2f5f4a0567db834f72afc6b75c512f309c9f4b13)] Github feedback: use futures-io to help with compile times (Bruno Tavares)
+- [[`2bf3131775`](https://github.com/datrs/random-access-storage/commit/2bf31317753b242bedec37a0a6a576f5c26533c7)] Implement async API for random-access-storage (Bruno Tavares)
+- [[`0bed19ef50`](https://github.com/datrs/random-access-storage/commit/0bed19ef50d0df238d0457e8af8890289ff385ed)] Merge pull request #20 from bltavares/master (Szabolcs Berecz)
+- [[`831b9aa23e`](https://github.com/datrs/random-access-storage/commit/831b9aa23e72fbe38cf19c3c7c794d8acfe9099a)] Adjust Travis to run clippy and rustfmt on stable only (Bruno Tavares)
+- [[`9c228739cc`](https://github.com/datrs/random-access-storage/commit/9c228739cc504d778b5c840d3d339dfbb54cae33)] Removes unused dependency (Bruno Tavares)
+- [[`e0a1ea9880`](https://github.com/datrs/random-access-storage/commit/e0a1ea9880a42f48459763d30724badcbe274ac2)] Update changelog (Yoshua Wuyts)
+
+### Stats
+```diff
+ .travis.yml  |  8 ++++----
+ CHANGELOG.md | 18 ++++++++++++++++++
+ Cargo.toml   |  6 ++++--
+ README.md    | 24 ++++++++++++------------
+ src/lib.rs   | 29 ++++++++++++++++++-----------
+ 5 files changed, 56 insertions(+), 29 deletions(-)
+```
+
+
 ## 2019-07-27, Version 3.0.0
 ### Commits
 - [[`49c25778a0`](https://github.com/datrs/random-access-storage/commit/49c25778a0f80db733028c059958303e374b5965)] (cargo-release) version 3.0.0 (Yoshua Wuyts)
