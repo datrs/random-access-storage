@@ -40,7 +40,7 @@ pub trait RandomAccess {
   async fn truncate(&mut self, length: u64) -> Result<(), Self::Error>;
 
   /// Get the size of the storage in bytes.
-  async fn len(&self) -> Result<u64, Self::Error>;
+  async fn len(&mut self) -> Result<u64, Self::Error>;
 
   /// Whether the storage is empty.
   /// For some storage backends it may be cheaper to calculate whether the
