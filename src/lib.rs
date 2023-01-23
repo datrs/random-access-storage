@@ -24,14 +24,6 @@ pub trait RandomAccess {
     length: u64,
   ) -> Result<Vec<u8>, Self::Error>;
 
-  /// Read a sequence of bytes at an offset from the backend.
-  async fn read_to_writer(
-    &mut self,
-    offset: u64,
-    length: u64,
-    buf: &mut (impl futures_io::AsyncWrite + Send),
-  ) -> Result<(), Self::Error>;
-
   /// Delete a sequence of bytes at an offset from the backend.
   async fn del(&mut self, offset: u64, length: u64) -> Result<(), Self::Error>;
 
