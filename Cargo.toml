@@ -10,4 +10,5 @@ readme = "README.md"
 edition = "2018"
 
 [dependencies]
-async-trait = "0.1.63"
+async-trait = "0.1"
+thiserror = "1"
