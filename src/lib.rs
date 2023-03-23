@@ -7,10 +7,16 @@ use thiserror::Error;
 
 #[derive(Error, Debug)]
 pub enum RandomAccessError {
-  #[error("Offset out of bounds. {length:?} < {offset:?}")]
-  OffsetOutOfBounds { offset: u64, length: u64 },
-  #[error("Range out of bounds. {length:?} < {start:?}..{end:?}")]
-  RangeOutOfBounds { start: u64, end: u64, length: u64 },
+  #[error("{} out of bounds. {} < {}{}",
+          .end.as_ref().map_or_else(|| "Offset", |_| "Range"),
+          .length,
+          .offset,
+          .end.as_ref().map_or_else(String::new, |end| format!("..{}", end)))]
+  OutOfBounds {
+    offset: u64,
+    end: Option<u64>,
+    length: u64,
+  },
   #[error("Unrecoverable input/output error occured.{}{}",
           .return_code.as_ref().map_or_else(String::new, |rc| format!(" Return code: {}.", rc)),
           .context.as_ref().map_or_else(String::new, |ctx| format!(" Context: {}.", ctx)))]
