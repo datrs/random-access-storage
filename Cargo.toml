@@ -5,9 +5,9 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/datrs/random-access-storage"
 documentation = "https://docs.rs/random-access-storage"
 description = "Abstract interface to implement random-access instances."
-authors = ["Yoshua Wuyts <yoshuawuyts@gmail.com>"]
+authors = ["Yoshua Wuyts <yoshuawuyts@gmail.com>", "Timo Tiuraniemi <timo.tiuraniemi@iki.fi>"]
 readme = "README.md"
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 async-trait = "0.1"
