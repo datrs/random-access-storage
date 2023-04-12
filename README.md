@@ -19,7 +19,7 @@ $ cargo add random-access-storage
 [MIT](./LICENSE-MIT) OR [Apache-2.0](./LICENSE-APACHE)
 
 [1]: https://img.shields.io/crates/v/random-access-storage.svg?style=flat-square
-[2]: https://crates.io/crate/random-access-storage
+[2]: https://crates.io/crates/random-access-storage
 [3]: https://github.com/datrs/random-access-storage/actions/workflows/ci.yml/badge.svg
 [4]: https://github.com/datrs/random-access-storage/actions
 [5]: https://img.shields.io/crates/d/random-access-storage.svg?style=flat-square
