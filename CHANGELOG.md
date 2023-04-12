@@ -1,3 +1,26 @@
+## 2023-04-12, Version 5.0.0
+### Commits
+- [[`8a55cc70fd`](https://github.com/datrs/random-access-storage/commit/8a55cc70fd3195dbc8ca8495309ff918b9c39d1f)] Switch from Travis to GHA (Timo Tiuraniemi)
+- [[`3d2f8ebc6d`](https://github.com/datrs/random-access-storage/commit/3d2f8ebc6d05da5d98a21f25fec31d5799dfed97)] Document crate properly, opting for documentation in lib.rs instead of just README.md. (Timo Tiuraniemi)
+- [[`ec84e44776`](https://github.com/datrs/random-access-storage/commit/ec84e44776fcf2f51c3e2126ef4cb53786fa6972)] Bump edition to 2021 alongside the other breaking changes (Timo Tiuraniemi)
+- [[`682fbd32c3`](https://github.com/datrs/random-access-storage/commit/682fbd32c34fc75b44c835475ce6deeb7802d3c8)] Use a new major version for the interface (Timo Tiuraniemi)
+- [[`e8ffd39452`](https://github.com/datrs/random-access-storage/commit/e8ffd39452d320e4453cf94f82cb58cb0dd3ee5a)] Use a single OutOfBounds error for more convenient error matching (Timo Tiuraniemi)
+- [[`0119575c91`](https://github.com/datrs/random-access-storage/commit/0119575c91d42602fc3ea62279b4594e73ea98c6)] Switch from anyhow to thiserror and RandomAccessError (Timo Tiuraniemi)
+- [[`89f442ae20`](https://github.com/datrs/random-access-storage/commit/89f442ae2063b975e626eb88e154a1391dfb4ff6)] Remove read_to_writer and futures dep (Timo Tiuraniemi)
+- [[`ac9db1bf02`](https://github.com/datrs/random-access-storage/commit/ac9db1bf020cc727bdcb8a4ae0b6485803a65d66)] Fix missing &mut causing Sync compilation problems (Timo Tiuraniemi)
+- [[`a37f98c96d`](https://github.com/datrs/random-access-storage/commit/a37f98c96d59ed06d104f0db68c2144db9750006)] Update changelog (Bruno Tavares)
+
+### Stats
+```diff
+ .github/workflows/ci.yml |  95 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ CHANGELOG.md             |  22 ++++++++++++++++++++++
+ Cargo.toml               |  10 +++++-----
+ README.md                |  66 +++---------------------------------------------------------------
+ src/lib.rs               | 188 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++---------------------------
+ 5 files changed, 286 insertions(+), 95 deletions(-)
+```
+
+
 ## 2020-03-03, Version 4.0.0
 ### Commits
 - [[`064eb1d6c9`](https://github.com/datrs/random-access-storage/commit/064eb1d6c9c1110f7cb01bfbaa6eb43d52330cd4)] (cargo-release) version 4.0.0 (Bruno Tavares)
