@@ -24,5 +24,5 @@ $ cargo add random-access-storage
 [4]: https://github.com/datrs/random-access-storage/actions
 [5]: https://img.shields.io/crates/d/random-access-storage.svg?style=flat-square
 [6]: https://crates.io/crates/random-access-storage
-[7]: https://docs.rs/random-access-storage/badge.svg
+[7]: https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square
 [8]: https://docs.rs/random-access-storage
