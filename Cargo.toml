@@ -7,7 +7,7 @@ documentation = "https://docs.rs/random-access-storage"
 description = "Abstract interface to implement random-access instances."
 authors = ["Yoshua Wuyts <yoshuawuyts@gmail.com>", "Timo Tiuraniemi <timo.tiuraniemi@iki.fi>"]
 readme = "README.md"
-edition = "2021"
+edition = "2024"
 
 [dependencies]
 async-trait = "0.1"
