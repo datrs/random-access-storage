@@ -108,11 +108,7 @@ pub trait RandomAccess {
   /// a maximum capacity that would be exceeded by the write.
   ///
   /// * [RandomAccessError::IO] if an unexpected IO error occurred.
-  async fn write(
-    &mut self,
-    offset: u64,
-    data: &[u8],
-  ) -> Result<(), RandomAccessError>;
+  fn write(&self, offset: u64, data: &[u8]) -> BoxFuture<Result<(), RandomAccessError>>;
 
   /// Read a sequence of bytes at an `offset` from the backend.
   ///
