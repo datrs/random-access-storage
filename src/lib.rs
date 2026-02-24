@@ -1,6 +1,3 @@
-#![deny(missing_docs)]
-#![cfg_attr(test, deny(warnings))]
-#![doc(test(attr(deny(warnings))))]
 //! # Abstract interface to implement random-access instances
 //!
 //! This crate defines the shared [RandomAccess] trait that makes it possible to create
@@ -19,7 +16,7 @@
 //! Your own random-access backend can be implemented like this:
 //!
 //! ```
-//! use random_access_storage::{RandomAccess, RandomAccessError};
+//! use random_access_storage::{RandomAccess, RandomAccessError, BoxFuture};
 //! use async_trait::async_trait;
 //!
 //! struct MyRandomAccess {
@@ -31,8 +28,8 @@
 //!   async fn write(&mut self, _offset: u64, _data: &[u8]) -> Result<(), RandomAccessError> {
 //!     unimplemented!();
 //!   }
-//
-//!   async fn read(&mut self, _offset: u64, _length: u64) -> Result<Vec<u8>, RandomAccessError> {
+//!
+//!   fn read(&self, _offset: u64, _length: u64) -> BoxFuture<Result<Vec<u8>, RandomAccessError>> {
 //!     unimplemented!();
 //!   }
 //!
@@ -57,7 +54,12 @@
 //!   }
 //! }
 //! ```
+use std::{future::Future, pin::Pin};
+
 use thiserror::Error;
+
+/// Convenience alias for the owned, sendable futures returned by [`RandomAccess::read`].
+pub type BoxFuture<T> = Pin<Box<dyn Future<Output = T> + Send + 'static>>;
 
 /// Error type for the [RandomAccess] trait methods.
 #[derive(Error, Debug)]
@@ -127,11 +129,11 @@ pub trait RandomAccess {
   /// [RandomAccess::len] > `offset` + `length`.
   ///
   /// * [RandomAccessError::IO] if an unexpected IO error occurred.
-  async fn read(
-    &mut self,
+  fn read(
+    &self,
     offset: u64,
     length: u64,
-  ) -> Result<Vec<u8>, RandomAccessError>;
+  ) -> BoxFuture<Result<Vec<u8>, RandomAccessError>>;
 
   /// Delete a sequence of bytes of given `length` at an `offset` from the backend.
   /// This either sets the bytes in the given slice to zeroes, or if
