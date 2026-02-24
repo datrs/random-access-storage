@@ -164,11 +164,7 @@ pub trait RandomAccess {
   async fn truncate(&mut self, length: u64) -> Result<(), RandomAccessError>;
 
   /// Get the size of the storage in bytes.
-  ///
-  /// # Errors
-  ///
-  /// * [RandomAccessError::IO] if an unexpected IO error occurred.
-  async fn len(&mut self) -> Result<u64, RandomAccessError>;
+  fn len(&self) -> u64;
 
   /// Whether the storage is empty. For some storage backends it may be
   /// cheaper to calculate whether the storage is empty than to calculate the
