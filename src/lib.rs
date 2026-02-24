@@ -17,15 +17,13 @@
 //!
 //! ```
 //! use random_access_storage::{RandomAccess, RandomAccessError, BoxFuture};
-//! use async_trait::async_trait;
 //!
 //! struct MyRandomAccess {
 //!   // Add fields here
 //! }
 //!
-//! #[async_trait]
 //! impl RandomAccess for MyRandomAccess {
-//!   async fn write(&mut self, _offset: u64, _data: &[u8]) -> Result<(), RandomAccessError> {
+//!   fn write(&self, _offset: u64, _data: &[u8]) -> BoxFuture<Result<(), RandomAccessError>> {
 //!     unimplemented!();
 //!   }
 //!
@@ -33,18 +31,17 @@
 //!     unimplemented!();
 //!   }
 //!
-//!   async fn del(&mut self, _offset: u64, _length: u64) -> Result<(), RandomAccessError> {
+//!   fn del(&self, _offset: u64, _length: u64) -> BoxFuture<Result<(), RandomAccessError>> {
 //!     unimplemented!();
 //!   }
 //!
-//!   async fn truncate(&mut self, _length: u64) -> Result<(), RandomAccessError> {
+//!   fn truncate(&self, _length: u64) -> BoxFuture<Result<(), RandomAccessError>> {
 //!     unimplemented!();
 //!   }
 //!
 //!   fn len(&self) -> u64 {
 //!     unimplemented!();
 //!   }
-//!
 //! }
 //! ```
 use std::{future::Future, pin::Pin};
@@ -98,7 +95,6 @@ impl From<std::io::Error> for RandomAccessError {
 
 /// Interface for reading from, writing to and deleting from a
 /// randomly accessible storage of bytes.
-#[async_trait::async_trait]
 pub trait RandomAccess {
   /// Write bytes of `data` at an `offset` to the backend.
   ///
