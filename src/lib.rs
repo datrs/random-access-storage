@@ -134,11 +134,7 @@ pub trait RandomAccess {
   /// * [RandomAccessError::OutOfBounds] if [RandomAccess::len()] < `offset` + `length`.
   ///
   /// * [RandomAccessError::IO] if an unexpected IO error occurred.
-  async fn del(
-    &mut self,
-    offset: u64,
-    length: u64,
-  ) -> Result<(), RandomAccessError>;
+  fn del(&self, offset: u64, length: u64) -> BoxFuture<Result<(), RandomAccessError>>;
 
   /// Resize the sequence of bytes so that [RandomAccess::len()] is set to
   /// `length`. If `length` < [RandomAccess::len()], the bytes are disregarded.
