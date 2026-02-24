@@ -41,11 +41,7 @@
 //!     unimplemented!();
 //!   }
 //!
-//!   async fn len(&mut self) -> Result<u64, RandomAccessError> {
-//!     unimplemented!();
-//!   }
-//!
-//!   async fn is_empty(&mut self) -> Result<bool, RandomAccessError> {
+//!   fn len(&self) -> u64 {
 //!     unimplemented!();
 //!   }
 //!
@@ -166,14 +162,10 @@ pub trait RandomAccess {
   /// Get the size of the storage in bytes.
   fn len(&self) -> u64;
 
-  /// Whether the storage is empty. For some storage backends it may be
-  /// cheaper to calculate whether the storage is empty than to calculate the
-  /// length.
-  ///
-  /// # Errors
-  ///
-  /// * [RandomAccessError::IO] if an unexpected IO error occurred.
-  async fn is_empty(&mut self) -> Result<bool, RandomAccessError>;
+  /// Whether the storage is empty.
+  fn is_empty(&self) -> bool {
+    self.len() == 0
+  }
 
   /// Flush buffered data on the underlying storage resource.
   ///
