@@ -150,7 +150,7 @@ pub trait RandomAccess {
   /// a maximum capacity smaller than `length`.
   ///
   /// * [RandomAccessError::IO] if an unexpected IO error occurred.
-  async fn truncate(&mut self, length: u64) -> Result<(), RandomAccessError>;
+  fn truncate(&self, length: u64) -> BoxFuture<Result<(), RandomAccessError>>;
 
   /// Get the size of the storage in bytes.
   fn len(&self) -> u64;
