@@ -45,9 +45,6 @@
 //!     unimplemented!();
 //!   }
 //!
-//!   async fn sync_all(&mut self) -> Result<(), RandomAccessError> {
-//!     unimplemented!();
-//!   }
 //! }
 //! ```
 use std::{future::Future, pin::Pin};
@@ -172,5 +169,7 @@ pub trait RandomAccess {
   /// # Errors
   ///
   /// * [RandomAccessError::IO] if an unexpected IO error occurred.
-  async fn sync_all(&mut self) -> Result<(), RandomAccessError>;
+  fn sync_all(&self) -> BoxFuture<Result<(), RandomAccessError>> {
+    Box::pin(std::future::ready(Ok(())))
+  }
 }
