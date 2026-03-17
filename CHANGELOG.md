@@ -1,4 +1,23 @@
-## 2023-04-12, Version 5.0.0
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+<!-- next-header -->
+
+## [Unreleased] - ReleaseDate
+
+### Added
+
+### Changed
+
+### Removed
+
+
+
+## [5.0.0] - 2023-04-12
 ### Commits
 - [[`8a55cc70fd`](https://github.com/datrs/random-access-storage/commit/8a55cc70fd3195dbc8ca8495309ff918b9c39d1f)] Switch from Travis to GHA (Timo Tiuraniemi)
 - [[`3d2f8ebc6d`](https://github.com/datrs/random-access-storage/commit/3d2f8ebc6d05da5d98a21f25fec31d5799dfed97)] Document crate properly, opting for documentation in lib.rs instead of just README.md. (Timo Tiuraniemi)
@@ -21,7 +40,7 @@
 ```
 
 
-## 2020-03-03, Version 4.0.0
+## [4.0.0] - 2020-03-03
 ### Commits
 - [[`064eb1d6c9`](https://github.com/datrs/random-access-storage/commit/064eb1d6c9c1110f7cb01bfbaa6eb43d52330cd4)] (cargo-release) version 4.0.0 (Bruno Tavares)
 - [[`0e7ab518e5`](https://github.com/datrs/random-access-storage/commit/0e7ab518e5d529160073e5aa295ff6a711472944)] Merge pull request #22 from bltavares/async-trait (Bruno Tavares)
@@ -43,7 +62,7 @@
 ```
 
 
-## 2019-07-27, Version 3.0.0
+## [3.0.0] - 2019-07-27
 ### Commits
 - [[`49c25778a0`](https://github.com/datrs/random-access-storage/commit/49c25778a0f80db733028c059958303e374b5965)] (cargo-release) version 3.0.0 (Yoshua Wuyts)
 - [[`553af611fd`](https://github.com/datrs/random-access-storage/commit/553af611fde9a22e92b17c9b52cc1379cd4dc57d)] u64 file offsets (#17) (James Halliday)
@@ -61,7 +80,7 @@
 ```
 
 
-## 2018-12-18, Version 2.0.0
+## [2.0.0] - 2018-12-18
 ### Commits
 - [[`55ab88f0fd`](https://github.com/datrs/random-access-storage/commit/55ab88f0fd5114f8911442bc665fcca6949516ac)] (cargo-release) version 2.0.0 (Yoshua Wuyts)
 - [[`81319ec100`](https://github.com/datrs/random-access-storage/commit/81319ec100e196c0ad79528d966d7717005c38f1)] len() and is_empty() (#16) (James Halliday)
@@ -77,7 +96,7 @@
 ```
 
 
-## 2018-11-20, Version 1.0.0
+## [1.0.0] - 2018-11-20
 ### Commits
 - [[`2e9f4090d7`](https://github.com/datrs/random-access-storage/commit/2e9f4090d766a8fbaf6301e789b7db1439e383ad)] (cargo-release) version 1.0.0 (Yoshua Wuyts)
 - [[`5e423e35ff`](https://github.com/datrs/random-access-storage/commit/5e423e35ff60ad7ed918a883c776c287a4b9b3fe)] truncate method (#15) (James Halliday)
@@ -95,7 +114,7 @@
 ```
 
 
-## 2018-08-29, Version 0.6.0
+## [0.6.0] - 2018-08-29
 ### Commits
 - [[`23e48f8e29`](https://github.com/datrs/random-access-storage/commits/23e48f8e29fc5cb0eaf7a0e77485cd6d23884771)] (cargo-release) version 0.6.0 (Yoshua Wuyts)
 - [[`f1fc4982aa`](https://github.com/datrs/random-access-storage/commits/f1fc4982aa1f1a4e6b919344810f87ec36be36c7)] Fixes #7: Make RandomAccess always open (#11) (Szabolcs Berecz)
@@ -113,4 +132,10 @@
  4 files changed, 29 insertions(+), 64 deletions(-)
 ```
 
-
+<!-- next-url -->
+[Unreleased]: https://github.com/datrs/random-access-storage/compare/v5.0.0...HEAD
+[5.0.0]: https://github.com/datrs/random-access-storage/compare/v4.0.0...v5.0.0
+[4.0.0]: https://github.com/datrs/random-access-storage/compare/v3.0.0...v4.0.0
+[3.0.0]: https://github.com/datrs/random-access-storage/compare/v2.0.0...v3.0.0
+[2.0.0]: https://github.com/datrs/random-access-storage/compare/v1.0.0...v2.0.0
+[1.0.0]: https://github.com/datrs/random-access-storage/compare/v0.6.0...v1.0.0
