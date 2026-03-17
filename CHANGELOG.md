@@ -11,7 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+* Add `BoxFuture` type alias for owned, sendable futures
+
 ### Changed
+
+* Bump edition to 2024
+* Remove `async-trait` dependency — all trait methods now return `BoxFuture` directly
+* `RandomAccess::read`, `write`, `del`, `truncate`, `sync_all` now take `&self` and return `BoxFuture`
+* `RandomAccess::len` is now synchronous and takes `&self`
+
+**Note: `write` data parameter is under consideration.** The `write` method currently takes `&[u8]`, but since `BoxFuture` is `'static` the data must either be cloned before being moved into the future, or the caller must ensure it lives long enough. We haven't settled on the best owned type for this parameter. Candidates are `Vec<u8>` (no new dependency, universal), `Bytes` (cheaply cloneable, idiomatic in async I/O) and keeping `&[u8]` with a lifetime-bound future (zero-copy but no longer `'static`). Feedback welcome.
 
 ### Removed
 
